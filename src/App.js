@@ -1,12 +1,23 @@
 import React from "react";
 import ParentText from "./component/Parent";
 import ChildText from "./component/Child";
-
+import SubParentText from "./component/SubParentText";
 function App() {
   return (
     <ParentText>
       {(parentText) => {
-        return <ChildText parentText={parentText} />;
+        return (
+          <SubParentText>
+            {(subparentText) => {
+              return (
+                <ChildText
+                  parentText={parentText}
+                  subParentText={subparentText}
+                />
+              );
+            }}
+          </SubParentText>
+        );
       }}
     </ParentText>
   );
